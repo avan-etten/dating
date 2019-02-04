@@ -72,6 +72,7 @@ $f3->route('GET|POST /form3', function($f3) {
 //define route for profile summary
 $f3->route('GET|POST /profile', function($f3) {
     session_start();
+    $f3->set('interests', $_SESSION['basic']);
     $template = new Template;
     echo $template->render('views/summary.html');
 });

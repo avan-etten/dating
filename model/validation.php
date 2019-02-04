@@ -89,8 +89,8 @@ function validateForm2($f3){
 }
 
 function validateForm3($f3){
-   // print_r($_POST);
-   // print_r($_SESSION);
+    print_r($_POST);
+    print_r($_SESSION);
 
     $bool = true;
     if (!isset($_POST['basic'])){
@@ -98,6 +98,7 @@ function validateForm3($f3){
     $bool = false;
     } else {
         $_SESSION['basic'] = $_POST['basic'];
+
     }
     if (!isset($_POST['complicated'])){
         $f3->set("errors['complicated']", "Is it ok to have type in interests?");

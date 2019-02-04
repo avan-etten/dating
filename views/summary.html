@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile Summary</title>
-</head>
+<include href="views/head.html"/>
 <body>
+<include href="views/navbar.html"/>
 
+
+<div>
+    <p>Name: {{@SESSION['fName']}} {{@SESSION['lName']}}</p>
+    <p>Gender: {{@SESSION['gender']}}</p>
+    <p>Phone: {{@SESSION['phone']}}</p>
+    <p>Email: {{@SESSION['email']}}</p>
+    <p>State: {{@SESSION['state']}}</p>
+    <p>Seeking: {{@SESSION['seeking']}}</p>
+    <p>Interests: <repeat group="{{@SESSION['basic']}}"  value="{{@interest}}">{{@interest}}, </repeat>
+                  <repeat group="{{@SESSION['complicated']}}"  value="{{@interest}}">{{@interest}}, </repeat></p>
+</div>
 </body>
 </html>

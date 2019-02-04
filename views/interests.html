@@ -10,20 +10,20 @@
     <fieldset>
 
         <label><h3>Basic Interests:</h3>
-                <input type="checkbox" name="basic"> Food <input type="checkbox" name="basic"> TV
-                <input type="checkbox" name="basic"> Cars <input type="checkbox" name="basic"> Computers <br>
-                <input type="checkbox" name="basic"> Games <input type="checkbox" name="basic"> Subtle Racism
-                <input type="checkbox" name="basic"> Woodworking <input type="checkbox" name="basic"> Sports
+                <input type="checkbox" name="basic[]" value="food"> Food <input type="checkbox" name="basic[]" value="tv"> TV
+                <input type="checkbox" name="basic[]" value="cars"> Cars <input type="checkbox" name="basic[]" value="computers"> Computers <br>
+                <input type="checkbox" name="basic[]" value="games"> Games <input type="checkbox" name="basic[]" value="subtle racism"> Subtle Racism
+                <input type="checkbox" name="basic[]" value="woodworking"> Woodworking <input type="checkbox" name="basic[]" value="sports"> Sports
 
             </label>
         <check if="{{isset(@errors['basic'])}}">
             <p>{{@errors['basic']}}</p>
         </check>
         <label><h3>Weird Stuff you might be into:</h3>
-                <input type="checkbox" name="complicated" > Assassination <input type="checkbox" name="complicated"> Dark Magicks
-                <input type="checkbox" name="complicated" > Fairy Hunting <input type="checkbox" name="complicated"> Doing Hand Stands <br>
-                <input type="checkbox" name="complicated" > Collecting Pebbles <input type="checkbox" name="complicated"> Drinking Kombucha
-                <input type="checkbox" name="complicated" > Idolatry <input type="checkbox" name="complicated"> Prescription Drugs
+                <input type="checkbox" name="complicated[]"  value="assassination"> Assassination <input type="checkbox" name="complicated[]" value="dark-magicks"> Dark Magicks
+                <input type="checkbox" name="complicated[]"  value="fairy-hunting"> Fairy Hunting <input type="checkbox" name="complicated[]" value="hand-stands"> Doing Hand Stands <br>
+                <input type="checkbox" name="complicated[]"  value="pebbles"> Collecting Pebbles <input type="checkbox" name="complicated[]" value="kombucha"> Drinking Kombucha
+                <input type="checkbox" name="complicated[]"  value="idolatry"> Idolatry <input type="checkbox" name="complicated[]" value="prescription-drugs"> Prescription Drugs
             </label>
         <check if="{{isset(@errors['complicated'])}}">
             <p>{{@errors['complicated']}}</p>

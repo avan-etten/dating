@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Personal Information</title>
-</head>
-<body>
+<include href="views/head.html"/>
 <include href="views/navbar.html"/>
 <form method="post" action="#">
     <fieldset>
@@ -14,7 +8,7 @@
          </label>
         <check if="{{isset(@errors['first'])}}">
             <p>{{@errors['first']}}</p>
-        </check>
+        </check><br>
 
         <!-- Last Name -->
         <label><h3>Last Name</h3>
@@ -22,7 +16,7 @@
         </label>
         <check if="{{isset(@errors['last'])}}">
             <p>{{@errors['last']}}</p>
-        </check>
+        </check><br>
 
         <!-- Age -->
         <label><h3>Age</h3>
@@ -30,7 +24,7 @@
         </label>
         <check if="{{isset(@errors['age'])}}">
             <p>{{@errors['age']}}</p>
-        </check>
+        </check><br>
 
         <!-- Gender -->
         <label><h3>Gender: </h3>
@@ -39,7 +33,7 @@
         </label>
         <check if="{{isset(@errors['gender'])}}">
             <p>{{@errors['gender']}}</p>
-        </check>
+        </check><br>
 
         <!-- Phone Number -->
         <label><h3>Phone Number: </h3>
@@ -47,7 +41,7 @@
         </label>
         <check if="{{isset(@errors['phone'])}}">
             <p>{{@errors['phone']}}</p>
-        </check>
+        </check><br>
         </fieldset>
 
         <button type="submit">Next --></button>
