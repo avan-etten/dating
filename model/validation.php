@@ -9,7 +9,7 @@
 function validateForm1($f3){
     //print_r($_POST);
     $bool = true;
-    if (!isset($_POST['email']) || !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
+    if (empty($_POST['email']) || !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
         $f3->set("errors['email']", "Please provide a valid email address");
         $bool = false;
     } else {
@@ -50,32 +50,37 @@ function validState($state){
     return false;
 }
 
-function validateForm2(){
-   // print_r($_POST);
+function validateForm2($f3){
+   //print_r($_POST);
    // print_r($_SESSION);
 
     $bool = true;
-    if (!isset($_POST['fName'])){
+    if (empty($_POST['fName'])){
+        $f3->set("errors['first']", "This doesn't appear to be a first name.");
         $bool = false;
     } else {
         $_SESSION['fName'] = $_POST['fName'];
     }
-    if (!isset($_POST['lName'])){
+    if (empty($_POST['lName'])){
+        $f3->set("errors['last']", "This doesn't appear to be a last name.");
         $bool = false;
     } else {
         $_SESSION['lName'] = $_POST['lName'];
     }
-    if (!isset($_POST['age'])){
+    if (empty($_POST['age'])){
+        $f3->set("errors['age']", "You're how old?!?");
         $bool = false;
     } else {
         $_SESSION['age'] = $_POST['age'];
     }
     if (!isset($_POST['gender'])){
+        $f3->set("errors['gender']", "There are only 2 genders");
         $bool = false;
     } else {
         $_SESSION['gender'] = $_POST['gender'];
     }
-    if (!isset($_POST['phone'])){
+    if (empty($_POST['phone'])){
+        $f3->set("errors['phone']", "TO DO, proper phone number validation");
         $bool = false;
     } else {
         $_SESSION['phone'] = $_POST['phone'];
@@ -83,17 +88,19 @@ function validateForm2(){
     return $bool;
 }
 
-function validateForm3(){
+function validateForm3($f3){
    // print_r($_POST);
    // print_r($_SESSION);
 
     $bool = true;
     if (!isset($_POST['basic'])){
+        $f3->set("errors['basic']", "Is it ok to have type in interests?");
     $bool = false;
     } else {
         $_SESSION['basic'] = $_POST['basic'];
     }
     if (!isset($_POST['complicated'])){
+        $f3->set("errors['complicated']", "Is it ok to have type in interests?");
         $bool = false;
     } else {
         $_SESSION['complicated'] = $_POST['complicated'];

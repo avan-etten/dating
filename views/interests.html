@@ -8,19 +8,25 @@
 <form method="post" action="#">
     <fieldset>
 
-            <label>Basic Interests: <br>
+        <label><h3>Basic Interests:</h3>
                 <input type="checkbox" name="basic"> Food <input type="checkbox" name="basic"> TV
                 <input type="checkbox" name="basic"> Cars <input type="checkbox" name="basic"> Computers <br>
                 <input type="checkbox" name="basic"> Games <input type="checkbox" name="basic"> Subtle Racism
                 <input type="checkbox" name="basic"> Woodworking <input type="checkbox" name="basic"> Sports
 
-            </label><br><br>
-            <label>Weird Stuff you might be into: <br>
+            </label>
+        <check if="{{isset(@errors['basic'])}}">
+            <p>{{@errors['basic']}}</p>
+        </check>
+        <label><h3>Weird Stuff you might be into:</h3>
                 <input type="checkbox" name="complicated" > Assassination <input type="checkbox" name="complicated"> Dark Magicks
                 <input type="checkbox" name="complicated" > Fairy Hunting <input type="checkbox" name="complicated"> Doing Hand Stands <br>
                 <input type="checkbox" name="complicated" > Collecting Pebbles <input type="checkbox" name="complicated"> Drinking Kombucha
                 <input type="checkbox" name="complicated" > Idolatry <input type="checkbox" name="complicated"> Prescription Drugs
             </label>
+        <check if="{{isset(@errors['complicated'])}}">
+            <p>{{@errors['complicated']}}</p>
+        </check>
 
 
     </fieldset>

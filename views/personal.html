@@ -8,28 +8,49 @@
 
 <form method="post" action="#">
     <fieldset>
-    <label>First Name
-    <input type="text" size="20" maxlength="20" name="fName">
-    </label><br>
+        <!-- First Name -->
+        <label><h3>First Name</h3>
+        <input type="text" size="20" maxlength="20" name="fName">
+         </label>
+        <check if="{{isset(@errors['first'])}}">
+            <p>{{@errors['first']}}</p>
+        </check>
 
-    <label>Last Name
-    <input type="text" size="20" maxlength="20" name="lName">
-    </label><br>
+        <!-- Last Name -->
+        <label><h3>Last Name</h3>
+         <input type="text" size="20" maxlength="20" name="lName">
+        </label>
+        <check if="{{isset(@errors['last'])}}">
+            <p>{{@errors['last']}}</p>
+        </check>
 
-    <label>Age
-    <input type="text" size="20" maxlength="20" name="age">
-    </label><br>
+        <!-- Age -->
+        <label><h3>Age</h3>
+        <input type="text" size="20" maxlength="20" name="age">
+        </label>
+        <check if="{{isset(@errors['age'])}}">
+            <p>{{@errors['age']}}</p>
+        </check>
 
-    <label>
-        <input type="radio" value="male" name="gender">Male
-        <input type="radio" value="female" name="gender">Female
-    </label><br>
+        <!-- Gender -->
+        <label><h3>Gender: </h3>
+            <input type="radio" value="male" name="gender">Male
+            <input type="radio" value="female" name="gender">Female
+        </label>
+        <check if="{{isset(@errors['gender'])}}">
+            <p>{{@errors['gender']}}</p>
+        </check>
 
-    <label>Phone Number
-    <input type="text" size="20" maxlength="20" name="phone">
-    </label>
-    </fieldset>
-    <button type="submit">Next --></button>
+        <!-- Phone Number -->
+        <label><h3>Phone Number: </h3>
+        <input type="text" size="20" maxlength="20" name="phone">
+        </label>
+        <check if="{{isset(@errors['phone'])}}">
+            <p>{{@errors['phone']}}</p>
+        </check>
+        </fieldset>
+
+        <button type="submit">Next --></button>
 </form>
 
 </body>

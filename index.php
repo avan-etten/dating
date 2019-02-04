@@ -46,7 +46,9 @@ $f3->route('GET|POST /form1', function($f3) {
 //define route for personal form
 $f3->route('GET|POST /form2', function($f3) {
     session_start();
-    if (validateForm2()){
+
+    if (!empty($_POST))
+    if (validateForm2($f3)){
         $f3->reroute('/form3');
     }
 
@@ -57,7 +59,9 @@ $f3->route('GET|POST /form2', function($f3) {
 //define route for interests form
 $f3->route('GET|POST /form3', function($f3) {
     session_start();
-    if(validateForm3()) {
+
+    if (!empty($_POST))
+    if(validateForm3($f3)) {
         $f3->reroute('/profile');
     }
 
