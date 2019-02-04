@@ -5,12 +5,12 @@
     <title>Personal Information</title>
 </head>
 <body>
-
+<include href="views/navbar.html"/>
 <form method="post" action="#">
     <fieldset>
         <!-- First Name -->
         <label><h3>First Name</h3>
-        <input type="text" size="20" maxlength="20" name="fName">
+        <input type="text" size="20" maxlength="20" name="fName" value="{{@POST['fName']}}">
          </label>
         <check if="{{isset(@errors['first'])}}">
             <p>{{@errors['first']}}</p>
@@ -18,7 +18,7 @@
 
         <!-- Last Name -->
         <label><h3>Last Name</h3>
-         <input type="text" size="20" maxlength="20" name="lName">
+         <input type="text" size="20" maxlength="20" name="lName" value="{{@POST['lName']}}">
         </label>
         <check if="{{isset(@errors['last'])}}">
             <p>{{@errors['last']}}</p>
@@ -26,7 +26,7 @@
 
         <!-- Age -->
         <label><h3>Age</h3>
-        <input type="text" size="20" maxlength="20" name="age">
+        <input type="text" size="20" maxlength="20" name="age" value="{{@POST['age']}}">
         </label>
         <check if="{{isset(@errors['age'])}}">
             <p>{{@errors['age']}}</p>
@@ -43,7 +43,7 @@
 
         <!-- Phone Number -->
         <label><h3>Phone Number: </h3>
-        <input type="text" size="20" maxlength="20" name="phone">
+        <input type="text" size="20" maxlength="20" name="phone" value="{{@POST['phone']}}">
         </label>
         <check if="{{isset(@errors['phone'])}}">
             <p>{{@errors['phone']}}</p>

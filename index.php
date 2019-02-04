@@ -26,8 +26,8 @@ $f3->route('GET|POST /', function() {
     session_start();
     $_SESSION = array();
 
-    $view = new View;
-    echo $view->render('views/home.html');
+    $template = new Template;
+    echo $template->render('views/home.html');
 });
 
 //define route for profile form

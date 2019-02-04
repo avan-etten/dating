@@ -1,23 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-</head>
-<body>
 
+
+<include href="views/head.html"/>
+<body>
+<include href="views/navbar.html"/>
 <form method="post" action="#">
     <fieldset>
 
         <!--email -->
         <label><h3>Email</h3>
-            <input type="text" size="50" maxlength="50" name="email">
+            <input type="text" size="50" maxlength="50" name="email" value="{{@POST['email']}}">
         </label>
         <check if="{{isset(@errors['email'])}}">
             <p>{{@errors['email']}}</p>
         </check>
-
-        <!-- state -->
+        <br>
+        <!-- state needs to be expanded -->
         <label><h3>State</h3>
             <select name="state" id="state">
                  <option>Washington</option>
@@ -26,7 +23,7 @@
         <check if="{{isset(@errors['state'])}}">
             <p>{{@errors['state']}}</p>
         </check>
-
+        <br>
         <!-- Seeking -->
         <label><h3>Seeking:</h3>
             <input type="checkbox" name="seeking[]" value="male">Male
