@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form method="post" action="#">
+<form method="post" action="form3">
     <fieldset>
     <label>First Name
     <input type="text" size="20" maxlength="20" name="fName">

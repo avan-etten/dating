@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="#">
+<form method="post" action="profile">
     <fieldset>
 
             <label>Basic Interests: <br>
