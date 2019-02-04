@@ -8,24 +8,38 @@
 
 <form method="post" action="#">
     <fieldset>
-        <label>Email
-            <input type="text" size="20" maxlength="20" name="email">
-        </label><br>
 
-        <label>State
+        <!--email -->
+        <label><h3>Email</h3>
+            <input type="text" size="50" maxlength="50" name="email">
+        </label>
+        <check if="{{isset(@errors['email'])}}">
+            <p>{{@errors['email']}}</p>
+        </check>
+
+        <!-- state -->
+        <label><h3>State</h3>
             <select name="state" id="state">
                  <option>Washington</option>
             </select>
-        </label><br>
+        </label>
+        <check if="{{isset(@errors['state'])}}">
+            <p>{{@errors['state']}}</p>
+        </check>
 
-        <label>Seeking: <br>
+        <!-- Seeking -->
+        <label><h3>Seeking:</h3>
             <input type="checkbox" name="seeking[]" value="male">Male
             <input type="checkbox" name="seeking[]" value="female">Female
             <br>
             <input type="checkbox" name="seeking[]" value="lonely">Loneliness
             <input type="checkbox" name="seeking[]" value="despair">Despair
         </label>
+        <check if="{{isset(@errors['seeking'])}}">
+            <p>{{@errors['seeking']}}</p>
+        </check>
     </fieldset>
+
     <button type="submit">Next --></button>
 </form>
 
