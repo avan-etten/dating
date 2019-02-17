@@ -6,26 +6,26 @@
  * Time: 6:17 PM
  */
 
-function validateForm1($f3){
+function validateForm2($f3){
     //print_r($_POST);
     $bool = true;
     if (empty($_POST['email']) || !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
         $f3->set("errors['email']", "Please provide a valid email address");
         $bool = false;
     } else {
-        $_SESSION['email'] = $_POST['email'];
+      //  $_SESSION['email'] = $_POST['email'];
     }
     if (!isset($_POST['state']) || !validState($_POST['state'])){
         $f3->set("errors['state']", "What is this? That was not a state");
         $bool = false;
     } else {
-        $_SESSION['state'] = $_POST['state'];
+      //  $_SESSION['state'] = $_POST['state'];
     }
     if (!isset($_POST['seeking'])){
         $f3->set("errors['seeking']", "You either aren't seeking anything, or have come to the wrong site");
         $bool = false;
     } else {
-        $_SESSION['seeking'] = $_POST['seeking'];
+       // $_SESSION['seeking'] = $_POST['seeking'];
     }
 
     return $bool;
@@ -50,7 +50,7 @@ function validState($state){
     return false;
 }
 
-function validateForm2($f3){
+function validateForm1($f3){
    //print_r($_POST);
    // print_r($_SESSION);
 
@@ -85,26 +85,29 @@ function validateForm2($f3){
     } else {
        // $_SESSION['phone'] = $_POST['phone'];
     }
+    if (isset($_POST['premium'])){
+        $f3->set("checked['checked']", "checked");
+    }
     return $bool;
 }
 
 function validateForm3($f3){
-    print_r($_POST);
-    print_r($_SESSION);
+    //print_r($_POST);
+    //print_r($_SESSION);
 
     $bool = true;
     if (!isset($_POST['basic'])){
         $f3->set("errors['basic']", "Is it ok to have type in interests?");
     $bool = false;
     } else {
-        $_SESSION['basic'] = $_POST['basic'];
+        //$_SESSION['basic'] = $_POST['basic'];
 
     }
     if (!isset($_POST['complicated'])){
         $f3->set("errors['complicated']", "Is it ok to have type in interests?");
         $bool = false;
     } else {
-        $_SESSION['complicated'] = $_POST['complicated'];
+        //$_SESSION['complicated'] = $_POST['complicated'];
     }
 
     return $bool;
