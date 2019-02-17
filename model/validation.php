@@ -59,31 +59,31 @@ function validateForm2($f3){
         $f3->set("errors['first']", "This doesn't appear to be a first name.");
         $bool = false;
     } else {
-        $_SESSION['fName'] = $_POST['fName'];
+       // $_SESSION['fName'] = $_POST['fName'];
     }
     if (empty($_POST['lName'])){
         $f3->set("errors['last']", "This doesn't appear to be a last name.");
         $bool = false;
     } else {
-        $_SESSION['lName'] = $_POST['lName'];
+       // $_SESSION['lName'] = $_POST['lName'];
     }
     if (empty($_POST['age'])){
         $f3->set("errors['age']", "You're how old?!?");
         $bool = false;
     } else {
-        $_SESSION['age'] = $_POST['age'];
+       // $_SESSION['age'] = $_POST['age'];
     }
     if (!isset($_POST['gender'])){
         $f3->set("errors['gender']", "There are only 2 genders");
         $bool = false;
     } else {
-        $_SESSION['gender'] = $_POST['gender'];
+        //$_SESSION['gender'] = $_POST['gender'];
     }
     if (empty($_POST['phone'])){
         $f3->set("errors['phone']", "TO DO, proper phone number validation");
         $bool = false;
     } else {
-        $_SESSION['phone'] = $_POST['phone'];
+       // $_SESSION['phone'] = $_POST['phone'];
     }
     return $bool;
 }

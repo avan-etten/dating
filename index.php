@@ -15,9 +15,20 @@ require_once "vendor/autoload.php";
 
 require_once "model/validation.php";
 
+//Connect to DB
+require '/home/avanette/config.php';
+
+
 //Create an instance of the Base class
 $f3 = Base::instance();
-
+try {
+    //Instantiate a database object
+    $dbh= new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+    //echo 'Connected to database!';
+}
+catch(PDOException$e) {
+    echo$e->getMessage();
+}
 
 $f3->set('DEBUG', 3);
 //define a default route
@@ -36,6 +47,13 @@ $f3->route('GET|POST /form1', function($f3) {
 
     if (!empty($_POST))
     if (validateForm1($f3)){
+        if (!isset($_POST['premium'])) {
+            $_SESSION['member'] = new Member($_POST['fname'], $_POST['lname'],
+                $_POST['age'], $_POST['gender'], $_POST['email']);
+        } else {
+            $_SESSION['member'] = new PremiumMember($_POST['fname'], $_POST['lname'],
+                $_POST['age'], $_POST['gender'], $_POST['email']);
+        }
 
     $f3->reroute('/form2');
     }
