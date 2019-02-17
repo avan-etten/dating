@@ -5,12 +5,19 @@
  * Date: 2/16/2019
  * Time: 3:47 PM
  */
-
+/**
+ * The Member class represents a member of the dating site
+ *
+ * The Member has a first name, last name, age, gender, phone number, email address,
+ * state of residence, and a bio.
+ * @author Alec Van Etten <avan-etten@mail.greenriver.edu>
+ * @copyright 2019
+ */
 class Member
 {
 
-    private $_fname;
-    private $_lname;
+    private $_fName;
+    private $_lName;
     private $_age;
     private $_gender;
     private $_phone;
@@ -19,9 +26,17 @@ class Member
     private $_seeking;
     private $_bio;
 
-    public function __construct($fname, $lname, $age, $gender, $phone){
-        $this->_fname = $fname;
-        $this->_lname = $lname;
+    /**
+     * Member constructor.
+     * @param String $fName
+     * @param String $lName
+     * @param int $age
+     * @param String $gender
+     * @param String $phone
+     */
+    function __construct($fName, $lName, $age, $gender, $phone){
+        $this->_fName = $fName;
+        $this->_lName = $lName;
         $this->_age = $age;
         $this->_gender = $gender;
         $this->_phone = $phone;
@@ -32,15 +47,15 @@ class Member
      */
     public function getFname()
     {
-        return $this->_fname;
+        return $this->_fName;
     }
 
     /**
      * @param String $fname
      */
-    public function setFname($fname)
+    public function setFname($fName)
     {
-        $this->_fname = $fname;
+        $this->_fName = $fName;
     }
 
     /**
@@ -48,15 +63,15 @@ class Member
      */
     public function getLname()
     {
-        return $this->_lname;
+        return $this->_lName;
     }
 
     /**
      * @param String $lname
      */
-    public function setLname($lname)
+    public function setLname($lName)
     {
-        $this->_lname = $lname;
+        $this->_lName = $lName;
     }
 
     /**
