@@ -44,7 +44,13 @@
         </check><br>
 
         <label><h3>Premium Membership</h3>
-        <input type="checkbox" value="premium" name="premium">Sign me up for a Premium Account!
+            <check if="{{isset(@checked['checked'])}}">
+                <true><input type="checkbox" value="premium" name="premium" checked="checked"></true>
+            </check>
+            <check if="{{isset(@checked['checked'])}}">
+                <false><input type="checkbox" value="premium" name="premium"></false>
+            </check>
+            Sign me up for a Premium Account!
         </label>
         </fieldset>
 
