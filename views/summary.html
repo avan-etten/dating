@@ -5,13 +5,17 @@
 
 <div>
     <p>Name: {{@SESSION['fName']}} {{@SESSION['lName']}}</p>
+    <p>Age: {{@SESSION['age']}}</p>
     <p>Gender: {{@SESSION['gender']}}</p>
     <p>Phone: {{@SESSION['phone']}}</p>
     <p>Email: {{@SESSION['email']}}</p>
     <p>State: {{@SESSION['state']}}</p>
-    <p>Seeking: {{@SESSION['seeking']}}</p>
+    <p>Seeking: <repeat group="{{@SESSION['seeking']}}" value="{{@seek}}">{{@seek}} </repeat></p>
     <p>Interests: <repeat group="{{@SESSION['basic']}}"  value="{{@interest}}">{{@interest}}, </repeat>
                   <repeat group="{{@SESSION['complicated']}}"  value="{{@interest}}">{{@interest}}, </repeat></p>
 </div>
 </body>
 </html>
+
+<!--[] => Sarah[_lname:PremiumMember:private] => Smith[_age:PremiumMember:private] => 30[_gender:PremiumMember:private] => Female[_phone:PremiumMember:private] => 222-333-4444[_email:PremiumMember:private] => my.email@gmail.com[_state:PremiumMember:private] => WASHINGTON[_seeking:PremiumMember:private] => Male[_bio:PremiumMember:private] => Lorem ipsum dolor sit amet, consectet... [_inDoorInterests:PremiumMember:private] => Array
+-->
