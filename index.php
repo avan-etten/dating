@@ -21,14 +21,8 @@ require_once "model/validation.php";
 
 //Create an instance of the Base class
 $f3 = Base::instance();
-/*try {
-    //Instantiate a database object
-    $dbh= new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    //echo 'Connected to database!';
-}
-catch(PDOException$e) {
-    echo$e->getMessage();
-}*/
+
+
 
 $f3->set('DEBUG', 3);
 //define a default route
@@ -104,17 +98,25 @@ $f3->route('GET|POST /form3', function($f3) {
 $f3->route('GET|POST /profile', function($f3) {
     session_start();
     //print_r($_SESSION);
-    $member = $_SESSION['member'];
-    $_SESSION['fName'] = $member->getFname();
-    $_SESSION['lName'] = $member->getLname();
-    $_SESSION['age'] = $member->getAge();
-    $_SESSION['gender'] = $member->getGender();
-    $_SESSION['email'] = $member->getEmail();
-    $_SESSION['phone'] = $member->getPhone();
-    $_SESSION['state'] = $member->getState();
-    $_SESSION['seeking'] = $member->getSeeking();
-    $_SESSION['basic'] = $member->getBasicInterests();
-    $_SESSION['complicated'] = $member->getComplicatedInterests();
+    $dbh = new db();
+    $dbh->_connect();
+
+    $dbh->_insertMember();
+
+    $result = $dbh->_getMembers();
+    //$member = $_SESSION['member'];
+    foreach ($result as $row) {
+        $_SESSION['fName'] = $row['first'];
+        $_SESSION['lName'] = $row['last'];
+        $_SESSION['age'] = $row['age'];
+        $_SESSION['gender'] = $row['gender'];
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['phone'] = $row['phone'];
+        $_SESSION['state'] = $row['state'];
+        $_SESSION['seeking'] = $row['seeking'];
+        $_SESSION['basic'] = $row['interests'];
+
+    }
 
     $template = new Template;
     echo $template->render('views/summary.html');
