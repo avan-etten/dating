@@ -5,7 +5,7 @@
  * Date: 3/2/2019
  * Time: 7:44 PM
  */
-session_start();
+
 /*
  * CREATE TABLE members (
     ID int AUTO_INCREMENT NOT NULL,
@@ -53,7 +53,7 @@ class db
 
     function _insertMember(){
         $sql = "INSERT INTO members (first, last, age, phone, email, state, gender, seeking, interests)
-         VALUES (:first, :last, :age, :phone, :email, :state, :gender, :seeking, :interests)";
+         VALUES (:first, :last, :age, :phone, :email, :state, :gender, :seeking,:premium, :interests)";
 
         $statement = $this->_pdo->prepare($sql);
         $member = $_SESSION['member'];
@@ -70,6 +70,7 @@ class db
         $phone = $member->getPhone();
         $state = $member->getState();
         $seeking = implode(", ", $member->getSeeking());
+        $premium = $member->getPremium();
         $interests = implode(", ", $member->getBasicInterests());
 
 
@@ -81,11 +82,12 @@ class db
         $statement->bindParam(':phone', $phone, PDO::PARAM_STR);
         $statement->bindParam(':state', $state, PDO::PARAM_STR);
         $statement->bindParam(':seeking', $seeking, PDO::PARAM_STR);
+        $statement->bindParam(':premium', $premium, PDO::PARAM_INT);
         $statement->bindParam(':interests', $interests, PDO::PARAM_STR);
 
         $statement->execute();
         $this->_insertId = $this->_pdo->lastInsertId();
-        echo $this->_insertId;
+        //echo $this->_insertId;
         $_SESSION = array();
 
 
@@ -96,13 +98,46 @@ class db
        $statement = $this->_pdo->prepare($sql);
        $statement->execute();
 
-       return $statement->fetchAll(PDO::FETCH_ASSOC);
+       $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+       $table = "";
+       echo "<table>";
+
+       echo "<tr><th>ID</th><th>Name</th><th>Age</th><th>Phone</th>
+        <th>Email</th><th>State</th><th>Gender</th><th>Seeking</th>
+        <th>Premium</th><th>Interests</th>
+        </tr>";
+
+       foreach ($result as $row){
+            echo "<tr>";
+            echo "<td> <a href=".$row['ID'].">".$row['ID']."</a></td>";
+            echo "<td>".$row['first']." " .$row['last']."</td>";
+            echo "<td>".$row['age']."</td>";
+            echo "<td>".$row['phone']."</td>";
+            echo "<td>".$row['email']."</td>";
+            echo "<td>".$row['state']."</td>";
+            echo "<td>".$row['gender']."</td>";
+            echo "<td>".$row['seeking']."</td>";
+            echo "<td>".$row['premium']."</td>";
+            echo "<td>".$row['interests']."</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+
 
 
     }
 
     function _getMember($id){
+        $sql = "SELECT * FROM members WHERE id = :id";
+        $statement = $this->_pdo->prepare($sql);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
 
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function _getInsertId(){
+        return $this->_insertId;
     }
 
 
