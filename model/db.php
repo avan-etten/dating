@@ -29,6 +29,12 @@
  * VALUES ("Droogle", "Groogle", 23, "253-555-6543", "dGroogle@mail.com", "Washington", 1,
  *          "Male, Loneliness", "Collecting Pebbles, Dark Magicks")
  */
+
+/**
+ * Class db
+ *
+ * database class for insertions and select statements for dating website
+ */
 class db
 {
     private $_pdo;
@@ -38,6 +44,9 @@ class db
 
     }
 
+    /**
+     * Connects to the database and creates a PDO
+     */
     function _connect(){
         require_once '/home/avanette/config.php';
         try {
@@ -51,8 +60,13 @@ class db
         }
     }
 
+    /**
+     * Inserts a member into the members table.
+     * takes in a first name, last name, age, phone number, email, state, gender, what the member is seeking,
+     * the members interests, and if the member is a premium member.
+     */
     function _insertMember(){
-        $sql = "INSERT INTO members (first, last, age, phone, email, state, gender, seeking, interests)
+        $sql = "INSERT INTO members (first, last, age, phone, email, state, gender, seeking,premium, interests)
          VALUES (:first, :last, :age, :phone, :email, :state, :gender, :seeking,:premium, :interests)";
 
         $statement = $this->_pdo->prepare($sql);
@@ -93,6 +107,9 @@ class db
 
     }
 
+    /**
+     * gets all of the members in the members database
+     */
     function _getMembers(){
        $sql = "SELECT * FROM members";
        $statement = $this->_pdo->prepare($sql);
@@ -127,6 +144,11 @@ class db
 
     }
 
+    /**
+     * Gets a single member from the members table
+     * @param $id of the member to find
+     * @return array the query result
+     */
     function _getMember($id){
         $sql = "SELECT * FROM members WHERE id = :id";
         $statement = $this->_pdo->prepare($sql);
@@ -136,6 +158,10 @@ class db
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Gets the ID of the last insert for use in the _getMember method
+     * @return int insertId
+     */
     function _getInsertId(){
         return $this->_insertId;
     }
