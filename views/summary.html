@@ -10,9 +10,8 @@
     <p>Phone: {{@SESSION['phone']}}</p>
     <p>Email: {{@SESSION['email']}}</p>
     <p>State: {{@SESSION['state']}}</p>
-    <p>Seeking: <repeat group="{{@SESSION['seeking']}}" value="{{@seek}}">{{@seek}} </repeat></p>
-    <p>Interests: <repeat group="{{@SESSION['basic']}}"  value="{{@interest}}">{{@interest}}, </repeat>
-                  <repeat group="{{@SESSION['complicated']}}"  value="{{@interest}}">{{@interest}}, </repeat></p>
+    <p>Seeking: {{@SESSION['seeking']}}</p>
+    <p>Interests: {{@SESSION['interests']}}</p>
 </div>
 </body>
 </html>
