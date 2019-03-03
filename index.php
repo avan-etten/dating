@@ -101,11 +101,13 @@ $f3->route('GET|POST /profile', function($f3) {
     $dbh = new db();
     $dbh->_connect();
 
-    $dbh->_insertMember();
+    if (isset($_SESSION['member'])) {
+        $dbh->_insertMember();
+    }
 
-    $result = $dbh->_getMembers();
+    $row = $dbh->_getMember($dbh->_getInsertId());
     //$member = $_SESSION['member'];
-    foreach ($result as $row) {
+    if (!empty($row)){
         $_SESSION['fName'] = $row['first'];
         $_SESSION['lName'] = $row['last'];
         $_SESSION['age'] = $row['age'];
@@ -120,6 +122,18 @@ $f3->route('GET|POST /profile', function($f3) {
 
     $template = new Template;
     echo $template->render('views/summary.html');
+});
+
+$f3->route('GET|POST /admin' , function($f3){
+    session_start();
+
+    $dbh = new db();
+    $dbh->_connect();
+
+
+    $template = new Template;
+    echo $template->render('views/admin.html');
+    $dbh->_getMembers();
 });
 
 //run fat free
